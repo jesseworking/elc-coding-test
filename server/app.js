@@ -20,7 +20,8 @@
 }
 */
 const data      = require('./data');
-const http      = require('http');
+const express   = require('express');
+const cors      = require('cors');
 const hostname  = 'localhost';
 const port      = 3035;
 
@@ -32,13 +33,35 @@ const port      = 3035;
  * The Request object 'req' represents the request to the server.
  * The ServerResponse object 'res' represents the writable stream back to the client.
  */
-http.createServer(function (req, res) {
-    // .. Here you can create your data response in a JSON format
-    
-    
-    res.write("Response goes in here..."); // Write out the default response
-    res.end(); //end the response
-}).listen( port );
 
+const app = express();
+app.use(cors());
+
+app.get('/', (req, res) => {
+    try {
+        if (!req.query) {
+            return res.status(400).send('Query is invalid.');
+        }
+
+        const {search} = req.query;
+
+        const result = data.filter(
+            (item) => {
+                const res = item.tags.filter(
+                    (tag) => {
+                        return tag.includes(search)
+                    }
+                );
+                return res.length;
+            }
+        );
+
+        res.status(200).send(result);
+    } catch(error) {
+        res.status(400).send('Unexpected Error.')
+    }
+});
+
+app.listen(port);
 
 console.log(`[Server running on ${hostname}:${port}]`);

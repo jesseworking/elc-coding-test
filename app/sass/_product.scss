@@ -1,0 +1,60 @@
+$breakpoint: 700px;
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 40px;
+    padding: 20px 0;
+    border-bottom: 1px solid lightgrey;
+
+    &-image {
+        width: 100px;
+    }
+
+    &-info {
+        padding: 50px 0 0 30px;
+        line-height: 1.4;
+    }
+
+    &-name {
+        display: flex;
+        column-gap: 40px;
+    }
+
+    &-status {
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    &-active {
+        background-color: green;
+    }
+
+    &-inactive {
+        background-color: grey;
+    }
+
+    &-desc {
+        max-width: 480px;
+    }
+
+    @media screen and (max-width: $breakpoint) {
+        margin: 0 15px;
+
+        &-image {
+            margin: auto;
+        }
+
+        &-info {
+            padding: 20px 0 0 0;
+        }
+
+        &-desc {
+            max-width: 100%;
+        }
+    }
+}

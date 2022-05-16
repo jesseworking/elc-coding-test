@@ -66,13 +66,11 @@ header.menu {
 
     div.search-container {
         position: absolute;
-        background-color: white;
         z-index: 20;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
         width: 100%;
         padding: 5px;
-        background-color: white;
-        border-bottom: 1px solid #CCC;
+        background-color: transparent;
         display: none;
         &.showing { display: block; }
         
@@ -93,4 +91,19 @@ header.menu {
         }
     }
 
+    div.search-list {
+        max-height: 500px;
+        overflow-y: scroll;
+        margin: 1px 0 20px 0;
+        background-color: white;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    div.search-status {
+        padding: 20px;
+        text-align: center;
+        background-color: white;
+    }
 }

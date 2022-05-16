@@ -17,7 +17,7 @@ class Home extends React.Component {
         return (
             <section id="home">
                 <div className="content">
-                    <p>ELC Coding Test...</p>
+                    <p></p>
                 </div>
             </section>
         );
